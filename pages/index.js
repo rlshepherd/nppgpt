@@ -67,7 +67,7 @@ export default function Home() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({result, historianResult}),
+        body: JSON.stringify(historianResult),
       });
 
       const translationData = await translationResponse.json();
