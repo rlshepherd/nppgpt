@@ -61,6 +61,7 @@ export default function Home() {
     }
   async function onTranslate(event) {
     event.preventDefault();
+    console.log(historianResult);
     try {
       const translationResponse = await fetch("/api/translate", {
         method: "POST",
