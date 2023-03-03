@@ -14,17 +14,16 @@ export default async function (req, res) {
     });
     return;
   }
-  const designerResult = req.body.result || '';
+  const designResult = req.body.designResult || '';
 
   const historianResult = req.body.historianResult || '';
 
-  console.log(`${designerResult} ${historianResult}`)
   try {
     const completion = await openai.createChatCompletion({
       model: "gpt-3.5-turbo",
       messages: [
         {"role": "system", "content": `You are a Taiwanese translator writing for social media marketing. Please translate the follow text in Traditional Chinese, localized for the Taiwan market.`},
-        {"role": "user", "content": `${designerResult} ${historianResult}`}]
+        {"role": "user", "content": `${designResult} ${historianResult}`}]
       });
     res.status(200).json({ result: completion.data.choices[0].message.content});
   } catch(error) {
